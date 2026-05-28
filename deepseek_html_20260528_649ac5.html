@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
+    <title>古代职业鉴定所 · 内部娱乐版</title>
+    <!-- html2canvas 库：用于生成清晰截图，支持文字换行 -->
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #2a5f4b 0%, #1d3e32 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', 'PingFang SC', Roboto, 'Microsoft YaHei', 'Noto Sans CJK SC', sans-serif;
+            padding: 20px;
+        }
+
+        /* 古风卷轴卡片主容器 */
+        .scroll-container {
+            max-width: 640px;
+            width: 100%;
+            margin: 20px auto;
+        }
+
+        .main-card {
+            background: #FFFCF0;
+            background-image: radial-gradient(circle at 15% 30%, rgba(200, 170, 110, 0.08) 2%, transparent 2.5%);
+            background-size: 32px 32px;
+            border-radius: 48px 28px 60px 36px;
+            box-shadow: 0 25px 40px rgba(0, 0, 0, 0.35), inset 0 1px 2px rgba(255, 245, 200, 0.8);
+            padding: 1.8rem 1.8rem 2rem;
+            border: 1px solid #e2cf8b;
+            transition: all 0.2s;
+        }
+
+        /* 标题区 */
+        .title-section {
+            text-align: center;
+            border-bottom: 2px dashed #c9aa5f;
+            padding-bottom: 12px;
+            margin-bottom: 16px;
+        }
+        .title-section h1 {
+            font-size: 1.9rem;
+            font-family: '华文楷书', 'STKaiti', '楷体', 'Microsoft YaHei', serif;
+            color: #8b3c2a;
+            letter-spacing: 4px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .title-section .sub {
+            font-size: 0.7rem;
+            color: #b47c44;
+            margin-top: 6px;
+            letter-spacing: 1px;
+        }
+
+        /* Logo行 */
+        .logo-area {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: #f7efdb;
+            padding: 8px 16px;
+            border-radius: 60px;
+            margin-bottom: 24px;
+            border: 1px solid #e2cf8b;
+            box-shadow: inset 0 0 2px #fff8e7, 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .company-logo-img {
+            width: 44px;
+            height: 44px;
+            background: #d9cdad;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            color: #5e3a2b;
+            font-weight: bold;
+            background-color: #f0e2c5;
+            box-shadow: inset 0 0 0 1px #fff6e5, 0 1px 2px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .company-logo-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 50%;
+        }
+        .logo-text {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #6b4c2c;
+            border-left: 1px solid #cbae7a;
+            padding-left: 12px;
+        }
+
+        /* 输入区域 */
+        .input-group {
+            margin-bottom: 20px;
+        }
+        .input-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #5a3e28;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 14px 18px;
+            font-size: 1rem;
+            border: 1px solid #e2cf8b;
+            border-radius: 48px;
+            background: #fffef8;
+            outline: none;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+        .input-group input:focus {
+            border-color: #c2874b;
+            box-shadow: 0 0 0 2px rgba(194, 135, 75, 0.2);
+        }
+
+        /* 按钮组 */
+        .btn-group {
+            display: flex;
+            gap: 14px;
+            margin: 20px 0 24px;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            flex: 2;
+            background: #9b4b2e;
+            border: none;
+            padding: 14px 10px;
+            border-radius: 48px;
+            color: white;
+            font-weight: bold;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 3px 0 #5a2c1a;
+        }
+        .btn-primary:active {
+            transform: translateY(2px);
+            box-shadow: 0 1px 0 #5a2c1a;
+        }
+        .btn-secondary {
+            flex: 1;
+            background: #eedbaf;
+            border: none;
+            padding: 14px 10px;
+            border-radius: 48px;
+            color: #754e2e;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .btn-secondary:active {
+            background: #e2cf9b;
+        }
+
+        /* 结果卡片（截图核心区域） */
+        .result-card {
+            background: #fff9ef;
+            background: linear-gradient(145deg, #fffbf0 0%, #fff7e8 100%);
+            border-radius: 36px;
+            padding: 24px 20px 28px;
+            margin: 20px 0 18px;
+            border: 1px solid #ecdcaa;
+            box-shadow: 0 12px 18px -8px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 250, 230, 0.9);
+            transition: all 0.2s;
+        }
+
+        /* 截图内部布局 —— 着重处理文字换行 */
+        .screenshot-area {
+            width: 100%;
+            word-break: break-word;
+            white-space: normal;
+            overflow-wrap: break-word;
+        }
+        .mini-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+            border-bottom: 1px dashed #e2cf8b;
+            padding-bottom: 8px;
+        }
+        .mini-logo-icon {
+            width: 36px;
+            height: 36px;
+            background: #ebddb0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: #7b582f;
+        }
+        .official-name {
+            font-size: 1.45rem;
+            font-weight: bold;
+            text-align: center;
+            margin: 12px 0 10px;
+            font-family: '华文楷书', 'STKaiti', serif;
+            color: #834a2c;
+            word-break: break-word;
+            white-space: normal;
+            line-height: 1.4;
+            padding: 0 8px;
+        }
+        .ancient-job {
+            font-size: 1.9rem;
+            font-weight: 800;
+            text-align: center;
+            background: linear-gradient(135deg, #bc6f3c, #9b4324);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin: 18px 0 16px;
+            letter-spacing: 1px;
+            word-break: break-word;
+            white-space: normal;
+            line-height: 1.45;
+            padding: 0 6px;
+        }
+        /* 保证较长的头衔内容自动换行，不溢出 */
+        .ancient-job br {
+            display: block;
+        }
+        .funny-note {
+            text-align: center;
+            font-style: italic;
+            color: #b28b5e;
+            font-size: 0.9rem;
+            margin: 14px 0 12px;
+            border-top: 1px dotted #eedbaa;
+            padding-top: 12px;
+            word-break: break-word;
+            white-space: normal;
+            line-height: 1.4;
+        }
+        .footer-seal {
+            text-align: center;
+            font-size: 0.7rem;
+            color: #bc8f6a;
+            margin-top: 15px;
+            font-family: monospace;
+            letter-spacing: 1px;
+            word-break: break-word;
+        }
+
+        /* 操作按钮 */
+        .action-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-top: 12px;
+            margin-bottom: 8px;
+        }
+        .icon-btn {
+            background: #f3e9d2;
+            border: 1px solid #ddc994;
+            padding: 10px 16px;
+            border-radius: 48px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.2s;
+            color: #5a3f2a;
+        }
+        .icon-btn:active {
+            background: #e6d8b9;
+            transform: scale(0.97);
+        }
+
+        /* 提示浮层 */
+        .toast-msg {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #2c2c28e0;
+            backdrop-filter: blur(8px);
+            color: #f9eec1;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            z-index: 1000;
+            pointer-events: none;
+            transition: opacity 0.2s;
+            opacity: 0;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 550px) {
+            .main-card {
+                padding: 1.2rem;
+            }
+            .ancient-job {
+                font-size: 1.5rem;
+            }
+            .official-name {
+                font-size: 1.2rem;
+            }
+            .btn-primary, .btn-secondary {
+                padding: 10px 8px;
+            }
+            .toast-msg {
+                white-space: nowrap;
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="scroll-container">
+    <div class="main-card">
+        <!-- 标题 -->
+        <div class="title-section">
+            <h1>🔖 古代职业鉴定所</h1>
+            <div class="sub">· 内部娱乐版 · 切勿较真</div>
+        </div>
+
+        <!-- Logo区域（公司展示） -->
+        <div class="logo-area">
+            <div class="company-logo-img" id="companyLogoPlace">
+                <!-- ********** 替换LOGO说明 ********** -->
+                <!-- 请将下方 img 标签的 src 替换为实际公司Logo图片地址（建议透明背景png） -->
+                <!-- 如果暂时没有图片，会显示文字占位，并且截图同样正常显示占位 -->
+                <img src="logo.png" alt="公司Logo" id="realLogoImg" style="display: block;" onerror="this.style.display='none';document.getElementById('logoTextFallback').style.display='flex'">
+                <div id="logoTextFallback" style="display: flex; align-items:center; justify-content:center; width:100%; height:100%; font-size:20px;">🏮</div>
+            </div>
+            <div class="logo-text">专属鉴定司</div>
+        </div>
+
+        <!-- 表单输入 -->
+        <div class="input-group">
+            <label>📜 姓 名</label>
+            <input type="text" id="userName" placeholder="例如：欧阳铁柱、张无忌" autocomplete="off">
+        </div>
+        <div class="input-group">
+            <label>⚙️ 岗 位</label>
+            <input type="text" id="userJob" placeholder="例如：开发工程师、销售总监、项目经理" autocomplete="off">
+        </div>
+
+        <!-- 主要操作按钮组 -->
+        <div class="btn-group">
+            <button class="btn-primary" id="generateBtn">🎭 鉴定我的前世职业</button>
+            <button class="btn-secondary" id="randomTestBtn">🎲 随机测试</button>
+        </div>
+
+        <!-- 结果卡片区 (截图取这个区域) 注意文字换行由CSS保证 -->
+        <div id="resultCard" class="result-card">
+            <div id="screenshotContainer" class="screenshot-area">
+                <div class="mini-logo" align-items="center">
+                    <div class="mini-logo-icon" id="miniLogoIcon">🏮</div>
+                    <span style="font-size:12px; color:#b37b48;">BSG鉴定印</span>
+                </div>
+                <div class="official-name" id="displayNameTitle">待鉴定 · 大人</div>
+                <!-- 古代职业区域支持自动换行，同时为了长文案可读，保留文本格式 -->
+                <div class="ancient-job" id="displayJobResult">【   】</div>
+                <div class="funny-note" id="displayFunnyNote">✨ 输入姓名与岗位，解锁你的前世官职 ✨</div>
+
+            </div>
+        </div>
+
+        <!-- 图片保存 按钮 -->
+        <div class="action-buttons">
+            <button class="icon-btn" id="saveImageBtn">📸 保存图片</button>
+        </div>
+        <div style="font-size: 0.7rem; text-align: center; margin-top: 12px; color: #ab8a5a;">✨ 长按图片也可保存  ✨</div>
+    </div>
+</div>
+
+<div id="toastMsg" class="toast-msg">✨ 提示</div>
+
+<script>
+    // ======================== 古代职业词库（严格按照需求文档 + 自动换行优化） ========================
+    // 岗位关键词映射前缀库
+    const jobPrefixMap = [
+        { 
+            keywords: [
+                "开发",
+                "技术",
+                "编程",
+                "后端",
+                "前端",
+                "算法",
+                "数据",
+                "全栈",
+                "架构"
+            ], 
+            prefixes: [
+                "钦天监",
+                "工部郎中",
+                "火器局作头",
+                "机巧博士",
+                "内廷供奉",
+                "少府监丞"
+            ] 
+        },
+        { 
+            keywords: [
+                "产品",
+                "策划",
+                "运营",
+                "PM",
+                "产品经理",
+                "用户运营",
+                "增长"
+            ], 
+            prefixes: [
+                "礼部郎中",
+                "翰林编修",
+                "起居郎",
+                "采风使",
+                "谏议大夫",
+                "通事舍人"
+            ] 
+        },
+        { 
+            keywords: [
+                "销售",
+                "商务",
+                "市场",
+                "BD",
+                "客户经理",
+                "渠道"
+            ], 
+            prefixes: [
+                "市舶提举",
+                "户部行走",
+                "通商大使",
+                "宣抚使",
+                "盐铁判官",
+                "榷货务使"
+            ] 
+        },
+        { 
+            keywords: [
+                "人事",
+                "HR",
+                "行政",
+                "财务",
+                "会计",
+                "出纳",
+                "人力"
+            ], 
+            prefixes: [
+                "宗正少卿",
+                "度支员外郎",
+                "内务府总管",
+                "掌簿使",
+                "库部郎中",
+                "太府寺丞"
+            ] 
+        },
+        { 
+            keywords: [
+                "设计",
+                "UI",
+                "UX",
+                "美工",
+                "视觉",
+                "交互"
+            ], 
+            prefixes: [
+                "画院待诏",
+                "纹样博士",
+                "造办处总管",
+                "丹青供奉",
+                "将作少匠"
+            ] 
+        },
+        { 
+            keywords: [
+                "管理",
+                "经理",
+                "总监",
+                "CTO",
+                "CEO",
+                "总裁",
+                "主管",
+                "leader",
+                "总经理"
+            ], 
+            prefixes: [
+                "同平章事",
+                "殿中监",
+                "节度使",
+                "尚书令",
+                "大学士",
+                "中书侍郎"
+            ] 
+        },
+        { 
+            keywords: [
+                "实习",
+                "试用",
+                "新人",
+                "助理",
+                "见习"
+            ], 
+            prefixes: [
+                "见习笔帖式",
+                "散差",
+                "备补小吏",
+                "行走学士",
+                "额外员外郎"
+            ] 
+        },
+        { 
+            keywords: [
+                "测试",
+                "QA",
+                "质量",
+                "测开"
+            ], 
+            prefixes: [
+                "纠察御史",
+                "验器监",
+                "推事官",
+                "司刑评事",
+                "大理评事"
+            ] 
+        },
+        { 
+            keywords: [
+                "运营",
+                "增长",
+                "用户",
+                "内容运营"
+            ], 
+            prefixes: [
+                "安抚使",
+                "市令",
+                "坊正",
+                "劝农使",
+                "度支巡官"
+            ] 
+        },
+        { 
+            keywords: [
+                "客服",
+                "售后",
+                "支持",
+                "在线"
+            ], 
+            prefixes: [
+                "宣赞舍人",
+                "通事舍人",
+                "引赞使",
+                "宾客司"
+            ] 
+        }
+    ];
+
+    const middleParts = [
+        "摸鱼式",
+        "背锅专业",
+        "熬夜特使",
+        "画饼侍郎",
+        "会议记录专属",
+        "甩锅御史",
+        "PPT翰林",
+        "需求变更使",
+        "甲方安抚使",
+        "碎银行走",
+        "奏折快递员"
+    ];
+    
+    const suffixParts = [
+        "兼打更人",
+        "并兼职修马蹄",
+        "但无俸禄",
+        "赐尚方咸鱼",
+        "专管御前咳嗽",
+        "配驴一头（草料自备）",
+        "俸禄发一半",
+        "上朝可带保温杯",
+        "赐黄马褂但洗了缩水",
+        "每日一石禄米（折现给铜板）",
+        "赐象牙笏板（塑料材质）"
+    ];
+
+    // 趣味备注库 (独立)
+    const remarksList = [
+        "此人上朝必带枸杞茶",
+        "据说曾用竹简写PRD",
+        "每日奏章批阅量全朝第一",
+        "同僚评价：靠谱但不完全靠谱",
+        "散朝后偷偷研究火药配方",
+        "玉如意常备，专敲打下属",
+        "曾因改需求被御史弹劾三次",
+        "给皇上演示产品时跪穿金銮殿",
+        "朝会上偷偷用手机刷工作群"
+    ];
+
+    // ======================== 复姓列表 ========================
+    const compoundSurnames = [
+        "欧阳", "司马", "诸葛", "上官", "东方","慕容", "令狐", "端木", "公孙", "仲孙", "宇文",
+        "鲜于", "闾丘", "司徒", "司空", "亓官", "司寇", "仉督", "子车", "颛孙", "公冶",
+        "宗政", "濮阳", "淳于", "单于", "太叔", "申屠", "公孙", "拓跋", "夹谷", "宰父",
+        "谷利", "侍其", "梁丘", "左丘", "东门", "西门", "南门", "北门", "百里", "东郭",
+        "微生", "夹伯", "叔夏", "公羊", "公良", "段干", "波", "辉", "傲"
+    ];
+
+    // ======================== 获取姓氏信息（支持复姓） ========================
+    function getSurnameInfo(name) {
+        if (!name || name.length < 2) {
+            return { surname: name.charAt(0) || "", fullSurname: name || "" };
+        }
+        // 检查前两个字是否是复姓
+        const firstTwo = name.substring(0, 2);
+        if (compoundSurnames.includes(firstTwo)) {
+            return { surname: firstTwo, fullSurname: firstTwo };
+        }
+        // 否则返回单姓
+        const firstChar = name.charAt(0);
+        return { surname: firstChar, fullSurname: firstChar };
+    }
+
+    // 岗位简称函数
+    function getShortJob(jobStr) {
+        if (!jobStr) return "待定";
+        let short = jobStr.slice(0, 8);
+        if(jobStr.length > 8) short += "…";
+        return short;
+    }
+
+    // 匹配前缀
+    function matchPrefix(jobTitle) {
+        if(!jobTitle) return defaultPrefix();
+        for(let group of jobPrefixMap) {
+            for(let kw of group.keywords) {
+                if(jobTitle.includes(kw)) {
+                    let arr = group.prefixes;
+                    return arr[Math.floor(Math.random() * arr.length)];
+                }
+            }
+        }
+        return defaultPrefix();
+    }
+
+    function defaultPrefix() {
+        const defaultList = ["翰林院学士","中书舍人","金吾卫","太常博士","著作佐郎","秘书郎"];
+        return defaultList[Math.floor(Math.random() * defaultList.length)];
+    }
+
+    function getRandomItem(arr) {
+        return arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    // ======================== 领导岗位专用词库（安全幽默版） ======================== 
+ 
+    // 销售总监后缀 
+    const salesDirectorSuffix = [ 
+        "但业绩归团队", 
+        "赐合同模板（用了都说好）", 
+        "但回款靠催", 
+        "配销售管理手册（没人看）", 
+        "但KPI翻倍了", 
+        "赏白酒一杯（可折现）" 
+    ]; 
+ 
+    // 销售总监备注 
+    const salesDirectorRemark = [ 
+        "此人最爱说'再跟一下这个客户'", 
+        "据说手机24小时不关机", 
+        "每日在销售群里发'加油！冲刺！'", 
+        "同僚评价：永远在下一个签约的路上", 
+        "此人擅长把'不行'变成'我再问问'" 
+    ]; 
+ 
+    // CTO后缀 
+    const ctoSuffix = [ 
+        "但技术栈又换了", 
+        "赐重构机会（一直没排期）", 
+        "但服务器挺稳的", 
+        "配代码规范文档（没人遵守）", 
+        "但架构要升级了", 
+        "赏双屏显示器（已自备）" 
+    ]; 
+ 
+    // CTO备注 
+    const ctoRemark = [ 
+        "此人最爱说'这个技术方案我们再评估一下'", 
+        "据说每天在看新技术但不敢用", 
+        "每日被拉进技术评审会3场", 
+        "同僚评价：技术选型的最终拍板人", 
+        "此人擅长把复杂问题讲简单" 
+    ]; 
+ 
+    // COO后缀 
+    const cooSuffix = [ 
+        "但流程又改了", 
+        "赐SOP手册（第8版）", 
+        "但跨部门协作靠吼", 
+        "配运营看板（没人更新）", 
+        "但效率要提升", 
+        "赏项目管理工具（已续费）" 
+    ]; 
+ 
+    // COO备注 
+    const cooRemark = [ 
+        "此人最爱说'我们按流程走'", 
+        "据说手机存了50个内部群", 
+        "每日在处理'紧急不重要'的事", 
+        "同僚评价：公司运转的润滑剂", 
+        "此人擅长在混乱中找到秩序" ,
+        "据说每天第一个到公司"
+    ]; 
+ 
+    // CEO后缀 
+    const ceoSuffix = [ 
+        "但战略要调整了", 
+        "赐决策权（大家一起定）", 
+        "但方向是对的", 
+        "配年度规划表（改了8版）", 
+        "但团队在努力", 
+        "赏落地执行（靠大家了）" 
+    ]; 
+ 
+    // CEO备注 
+    const ceoRemark = [ 
+        "此人最爱说'我们来对齐一下目标'", 
+        "据说每天在思考'下一步怎么走'", 
+        "每日回复'已阅，继续推进'", 
+        "同僚评价：掌舵的人最操心", 
+        "此人擅长把远景翻译成目标" 
+    ]; 
+ 
+    // ======================== 更新岗位分类函数（优先匹配领导岗位） ======================== 
+    function getJobCategory(jobTitle) { 
+        const job = jobTitle.toLowerCase(); 
+         
+        // 领导岗位优先匹配（更精确） 
+        if (job.includes("ceo") || job.includes("首席执行官") || job === "ceo") return "ceo"; 
+        if (job.includes("cto") || job.includes("首席技术官") || job === "cto") return "cto"; 
+        if (job.includes("coo") || job.includes("首席运营官") || job === "coo") return "coo"; 
+        if (job.includes("销售总监") || (job.includes("销售") && job.includes("总监"))) return "salesDirector"; 
+        if (job.includes("总监") && !job.includes("销售")) return "management"; 
+        if (job.includes("经理") && !job.includes("产品") && !job.includes("项目")) return "management"; 
+         
+        // 原有分类... 
+        if (/开发|技术|后端|前端|算法|运维|架构|数据|工程师/.test(job)) return "tech"; 
+        if (/产品|运营|用户|增长|内容|活动/.test(job) && !job.includes("项目")) return "product"; 
+        if (/销售|商务|BD|渠道|客户/.test(job) && !job.includes("总监")) return "sales"; 
+        if (/人事|HR|行政|财务|会计/.test(job)) return "hr"; 
+        if (/设计|UI|UX|视觉|美工/.test(job)) return "design"; 
+        if (/测试|QA|测开|质量/.test(job)) return "qa"; 
+        if (/实习|见习|助理|新人/.test(job)) return "intern"; 
+        if (/项目经理|项目主管/.test(job)) return "pm"; 
+         if (/售前|方案|咨询顾问/.test(job)) return "presales"; 
+        if (/实施|交付|顾问/.test(job)) return "delivery"; 
+       
+         
+        return null; 
+    } 
+ 
+    // ======================== 岗位分类后缀库（普通岗位） ======================== 
+    const suffixByCategory = { 
+        tech: ["但服务器总在半夜宕机","赐键盘一把（回车键已坏）","配双屏显示器（一个不亮）",,"bug改不完赐死","配咖啡机（仅限美式）","但日志忘打了","上线前习惯性拜一拜",
+        "一天不喝咖啡就手抖",
+        "日志写得像天书，自己都看不懂",
+        "说要重构说了三年了"], 
+        product: ["需求改了八遍又改回第一版",
+        "写PRD时觉得自己是乔布斯",
+        "看日活像开盲盒",
+        "AB测试永远两个方案一起扑街",
+        "听老板说完需求沉默了",
+        "用户画像画着画着像自己",
+        "看留存数据选择性失明",
+        "说'先做个简单版'说了二十遍"], 
+        sales: ["但业绩算去年的","赐签单宝典（过期版）","但回款在明年","配饭局报销（超额自费）","但客户放鸽子","赐合同模板（甲方没签字）","但提成下季度","赏白酒一壶（52度）"], 
+        hr: ["但招人招不到","赐离职面谈话术（对方哭了）","但预算砍半","配考勤机（总坏）","但员工要涨薪","赐招聘APP会员（已过期）","但报销三个月没下来"], 
+        design: ["但第108稿被打回","赐色卡（全是黑白）","但甲方要五彩斑斓的黑","配手绘板（笔丢了）","但切图少标注","赐花瓣网会员（打不开）","赏PS安装包（盗版警告）"], 
+        management: ["但说了不算","赐决策权（无预算）","但下属不听话","配办公室（隔音差）","但季度目标翻倍","赐裁人名额（1个）","但员工都摆烂","赏述职PPT模板（套娃）"], 
+        qa: ["提测像开盲盒",
+        "重现bug需要做法",
+        "听'我这是好的'听到免疫",
+        "测试手机卡得比老人机还慢",
+        "上线前改代码是固定节目",
+        "提bug按钮点得手指疼",
+        "听'这是特性'想打人"], 
+        intern: ["但没人带教","赐工位（在厕所旁）","但开会忘叫我","配公司电脑（开机5分钟）","但杂活全包","赐转正名额（明年）","但食堂饭卡没钱","赏加班晚餐（凉透了）"], 
+        pm: [  "进度永远在动态调整",
+        "甘特图红色是主色调",
+        "风险发生了就叫经验积累",
+        "变更申请单写成了长篇小说",
+        "听客户需求想辞职",
+        "加班加到忘记今天是周几",
+        "团队成员各忙各的",
+        "项目管理证书压箱底落灰"], 
+        delivery: ["但客户现场没网","部署手册写了跟没写一样",
+        "听'不是我要的'听到麻木",
+        "培训PPT讲完没人记住",
+        "验收签字等到花儿都谢了",
+        "出差高铁票攒了一抽屉",
+        "生产环境出问题正在跑路","赏干粮一袋（常驻现场）"], 
+        presales: ["但标书写完了客户不投","赐PPT模板（200页）","但产品演示时崩了","配POC环境（连不上）","但客户问了个答不出的问题","赐解决方案（百度来的）","但对手报价更低","赏样品机（开不了机）"] 
+    }; 
+ 
+    // ======================== 岗位分类备注库（普通岗位） ======================== 
+    const remarkByCategory = { 
+        tech: ["此人键盘的F5键已磨平","据说每天说'我本地跑得好好的'","曾因删库跑路未遂被警告","每日提交代码不超过10行","同僚称其'bug生产者'","此人最爱说'重启试试'"], 
+        product: ["此人手机里装了30个竞品App","据说曾用Excel画高保真原型","需求文档写了个寂寞","同僚称其'画饼仙人'"], 
+        sales: ["此人朋友圈永远在晒签约照","据说曾对客户叫爸爸","每日通话时长8小时起步","合同签完发现亏了","同僚称其'跑路预备役'"], 
+        hr: ["此人招人要求'来了就能干'","据说面试时比候选人还能说","每日处理离职申请像流水线","考勤表改了三遍还不对","同僚称其'工资条刺客'"], 
+        design: ["此人收藏了500G设计素材从未用过","据说常用字体是'思源黑体'","每日改稿时间比设计时间长","切图永远少一版","同僚称其'像素眼已瞎'"], 
+        management: ["此人开会必说'我总结三点'","据说PPT改了30版还是第一版好","每日审批流程比奏折还多","方案定完第二天改口","同僚称其'反向拍板王'"], 
+        qa: ["此人提交的bug没人看","据说电脑里存了100G截图","每日在群里@开发800次","提测包永远第一轮就挂","同僚称其'bug吸铁石'"], 
+        intern: ["此人每天第一个到最后一个走","据说工位上贴了'求转正'","每日帮前辈取快递30个","开会不敢说话只点头","同僚称其'办公室盆栽'"], 
+        pm: ["此人手机里存了100个项目进度表","据说每天说的最多的是'这个要多久'","每日被拉进8个新群","排期永远算少了三天","同僚称其'人形倒计时器'"], 
+        delivery: ["此人行李箱常年不收拾","据说去过40个城市的客户现场","每日在客户厕所里回消息","验收单签了20版还没过","同僚称其'客户公司编外人员'"], 
+        presales: ["此人笔记本电脑里存了50G标书","据说练过三天三夜的演示稿","每日回答'这个功能能不能做'八十次","POC做完了客户说不买了","同僚称其'人肉打印机'"] 
+    }; 
+ 
+    // ======================== 通用后缀和备注（兜底用） ========================
+    const defaultSuffixList = ["但无实权","俸禄只够买草料","但可带薪摸鱼","但晋升有望","赐加班粥一碗"];
+    const defaultRemarkList = ["此人周报永远写'优化用户体验'","据说每天第一个到公司","每日在群里发'收到'","会议发言简练有力"];
+
+    // ======================== 获取后缀（支持领导岗位） ======================== 
+    function getSuffixByJob(jobTitle) { 
+        const category = getJobCategory(jobTitle); 
+         
+        // 领导岗位专属后缀 
+        if (category === "ceo") return getRandomItem(ceoSuffix); 
+        if (category === "cto") return getRandomItem(ctoSuffix); 
+        if (category === "coo") return getRandomItem(cooSuffix); 
+        if (category === "salesDirector") return getRandomItem(salesDirectorSuffix); 
+         
+        // 原有分类后缀... 
+        if (category === "tech") return getRandomItem(suffixByCategory?.tech || defaultSuffixList); 
+        if (category === "product") return getRandomItem(suffixByCategory?.product || defaultSuffixList); 
+        if (category === "sales") return getRandomItem(suffixByCategory?.sales || defaultSuffixList); 
+        if (category === "pm") return getRandomItem(suffixByCategory?.pm || defaultSuffixList); 
+        if (category === "delivery") return getRandomItem(suffixByCategory?.delivery || defaultSuffixList); 
+        if (category === "presales") return getRandomItem(suffixByCategory?.presales || defaultSuffixList); 
+        if (category === "hr") return getRandomItem(suffixByCategory?.hr || defaultSuffixList); 
+        if (category === "design") return getRandomItem(suffixByCategory?.design || defaultSuffixList); 
+        if (category === "qa") return getRandomItem(suffixByCategory?.qa || defaultSuffixList); 
+        if (category === "management") return getRandomItem(suffixByCategory?.management || defaultSuffixList); 
+         
+        // 通用后缀（兜底） 
+        return getRandomItem(defaultSuffixList); 
+    } 
+ 
+    // ======================== 获取备注（支持领导岗位） ======================== 
+    function getRemarkByJob(jobTitle) { 
+        const category = getJobCategory(jobTitle); 
+         
+        // 领导岗位专属备注 
+        if (category === "ceo") return getRandomItem(ceoRemark); 
+        if (category === "cto") return getRandomItem(ctoRemark); 
+        if (category === "coo") return getRandomItem(cooRemark); 
+        if (category === "salesDirector") return getRandomItem(salesDirectorRemark); 
+         
+        // 原有分类备注... 
+        if (category === "tech") return getRandomItem(remarkByCategory?.tech || defaultRemarkList); 
+        if (category === "product") return getRandomItem(remarkByCategory?.product || defaultRemarkList); 
+        if (category === "sales") return getRandomItem(remarkByCategory?.sales || defaultRemarkList); 
+        if (category === "pm") return getRandomItem(remarkByCategory?.pm || defaultRemarkList); 
+        if (category === "delivery") return getRandomItem(remarkByCategory?.delivery || defaultRemarkList); 
+        if (category === "presales") return getRandomItem(remarkByCategory?.presales || defaultRemarkList); 
+        if (category === "hr") return getRandomItem(remarkByCategory?.hr || defaultRemarkList); 
+        if (category === "design") return getRandomItem(remarkByCategory?.design || defaultRemarkList); 
+        if (category === "qa") return getRandomItem(remarkByCategory?.qa || defaultRemarkList); 
+        if (category === "management") return getRandomItem(remarkByCategory?.management || defaultRemarkList); 
+         
+        // 通用备注（兜底） 
+        return getRandomItem(defaultRemarkList); 
+    } 
+
+    // 生成完整古代职业（每行一个词显示，字体一行比一行小）
+    // ======================== 领导岗位专用中缀库（稍长·古风·不冒犯） ======================== 
+    const leaderMiddleParts = [ 
+        "运筹帷幄行走", 
+        "决胜千里侍郎", 
+        "调和鼎鼐郎中", 
+        "统筹全局阁老", 
+        "高瞻远瞩使", 
+        "定海神针供奉", 
+        "指点江山参军", 
+        "纵横捭阖都督", 
+        "审时度势判官", 
+        "举重若轻学士", 
+        "提纲挈领行走", 
+        "纲举目张侍郎", 
+        "泰然处之供奉", 
+        "一锤定音阁老", 
+        "化繁为简博士", 
+        "未雨绸缪使", 
+        "海纳百川行走", 
+        "举贤任能侍郎", 
+        "夙夜在公供奉",      // 替代"熬夜" 
+        "走动管理行走",      // 替代"茶水间" 
+        "议事参赞侍郎",      // 替代"会议记录" 
+        "承责担当阁老",      // 替代"背锅" 
+        "客情维系郎中",      // 替代"甲方安抚" 
+        "顺势而为行走",      // 替代"需求变更" 
+        "赋能授职侍郎"       // 管理授权 
+    ]; 
+
+    function generateFullTitle(jobTitle) { 
+        let prefix = matchPrefix(jobTitle); 
+         
+        // 判断是否为领导岗位 
+        const category = getJobCategory(jobTitle); 
+        const isLeader = ["ceo", "cto", "coo", "salesDirector"].includes(category); 
+         
+        // 领导用专用中缀，普通岗位用原中缀 
+        let middle = isLeader ? getRandomItem(leaderMiddleParts) : getRandomItem(middleParts); 
+        let suffix = getSuffixByJob(jobTitle); 
+         
+        // HTML版本（用于显示） 
+        const htmlVersion = `<span style="font-size: 1.8rem;">【${prefix}】</span><br><span style="font-size: 1.4rem;">${middle}</span><br><span style="font-size: 1.1rem;">${suffix}</span>`; 
+        // 纯文本版本（用于复制） 
+        const textVersion = `【${prefix}】\n${middle}\n${suffix}`; 
+         
+        return { html: htmlVersion, text: textVersion }; 
+    }
+
+    function getRandomRemark(jobTitle) {
+        return getRemarkByJob(jobTitle);
+    }
+
+    // 全局存储当前生成的数据，用于截图和复制
+    let currentData = {
+        userName: "",
+        userJob: "",
+        shortJob: "",
+        ancientJobRaw: "",
+        ancientJobDisplay: "",
+        remark: "",
+        fullDisplayName: ""
+    };
+
+    // 更新结果卡片UI (支持文字自动换行)
+    function updateResultUI(data) {
+        document.getElementById("displayNameTitle").innerHTML = data.fullDisplayName;
+        document.getElementById("displayJobResult").innerHTML = data.ancientJobDisplay;
+        document.getElementById("displayFunnyNote").innerHTML = `✨ ${data.remark} ✨`;
+    }
+
+    // 主逻辑：生成鉴定结果
+    function generateAncientCareer(userName, userJob) {
+        if (!userName.trim() || !userJob.trim()) {
+            showToast("大人，请先留下姓名和岗位～", 1800);
+            return false;
+        }
+        let trimmedName = userName.trim();
+        let trimmedJob = userJob.trim();
+        let shortJob = getShortJob(trimmedJob);
+        let { surname, fullSurname } = getSurnameInfo(trimmedName);
+        let fullDisplay = `${fullSurname}大人 · ${shortJob}`;
+        
+        // 生成原始头衔（已包含【】）
+        let titleResult = generateFullTitle(trimmedJob);
+        let remark = getRandomRemark(trimmedJob);
+
+        currentData = {
+            userName: trimmedName,
+            userJob: trimmedJob,
+            shortJob: shortJob,
+            ancientJobRaw: titleResult.text,
+            ancientJobDisplay: titleResult.html,
+            remark: remark,
+            fullDisplayName: fullDisplay,
+            surname: surname
+        };
+        updateResultUI(currentData);
+        showToast(`🎉 鉴定完成！${fullSurname}大人的前世揭晓`, 1500);
+        return true;
+    }
+
+    // 随机测试
+    function randomTest() {
+        const sampleNames = ["王玄策", "李慕梓", "赵无双", "陆小棠", "慕容铁柱", "欧阳静", "林有术", "司马晴"];
+        const sampleJobs = ["产品经理", "后端开发", "项目经理", "销售总监", "UI设计师", "测试工程师", "运维主管", "内容运营", "CTO"];
+        const randomName = sampleNames[Math.floor(Math.random() * sampleNames.length)];
+        const randomJob = sampleJobs[Math.floor(Math.random() * sampleJobs.length)];
+        document.getElementById("userName").value = randomName;
+        document.getElementById("userJob").value = randomJob;
+        generateAncientCareer(randomName, randomJob);
+    }
+
+
+
+    let toastTimeout;
+    function showToast(msg, duration=1800) {
+        const toast = document.getElementById("toastMsg");
+        if(toastTimeout) clearTimeout(toastTimeout);
+        toast.style.opacity = "1";
+        toast.innerText = msg;
+        toastTimeout = setTimeout(() => {
+            toast.style.opacity = "0";
+        }, duration);
+    }
+
+    // ======================== 图片保存函数（分行布局版） ======================== 
+    async function saveAsImage() { 
+        if (!currentData.ancientJobRaw || currentData.ancientJobDisplay === "【   】") { 
+            showToast("请先鉴定职业再保存图片～", 1500); 
+            return; 
+        } 
+         
+        showToast("画像生成中...", 800); 
+         
+        // 创建一个独立的画板容器（不干扰页面显示） 
+        const canvasContainer = document.createElement('div'); 
+        canvasContainer.style.cssText = ` 
+            position: fixed; 
+            left: -9999px; 
+            top: 0; 
+            width: 550px; 
+            background: #FFFCF0; 
+            border-radius: 32px; 
+            padding: 28px 30px 35px; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3); 
+            font-family: 'PingFang SC', 'Microsoft YaHei', 'Segoe UI', sans-serif; 
+        `; 
+         
+        // 解析古代职业的各部分（前缀、中缀、后缀） 
+        let prefix = "";   // 【xxx】 
+        let middle = "";   // 中缀词 
+        let suffix = "";   // 后缀词 
+         
+        // 从 ancientJobDisplay 中解析（格式如 【钦天监】\n熬夜特使\n兼打更人） 
+        const jobText = currentData.ancientJobDisplay;
+        const bracketMatch = jobText.match(/【(.*?)】/); 
+        if (bracketMatch) { 
+            prefix = bracketMatch[1]; 
+        }
+        
+        // 解析剩余部分（去掉【xxx】后按换行分割）
+        const remaining = jobText.replace(/【.*?】/, '').trim();
+        const parts = remaining.split(/<br\s*\/?>/i).map(p => p.trim()).filter(p => p);
+        if (parts.length >= 1) middle = parts[0];
+        if (parts.length >= 2) suffix = parts[1];
+         
+        // 构建图片HTML 
+        canvasContainer.innerHTML = ` 
+            <style> 
+                .print-card { 
+                    background: #FFFDF5; 
+                    background-image: radial-gradient(circle at 20% 35%, rgba(200,170,110,0.05) 2%, transparent 2.5%); 
+                    background-size: 28px 28px; 
+                    border-radius: 28px; 
+                    padding: 20px 24px 28px; 
+                    border: 2px solid #d4a76a; 
+                    position: relative; 
+                } 
+                .print-header { 
+                    display: flex; 
+                    justify-content: center; 
+                    align-items: center; 
+                    border-bottom: 2px dashed #d4a76a; 
+                    padding-bottom: 12px; 
+                    margin-bottom: 20px; 
+                } 
+                .print-logo { 
+                    display: flex; 
+                    align-items: center; 
+                    gap: 8px; 
+                    font-size: 28px; 
+                    font-weight: bold; 
+                    color: #8b3c2a; 
+                    font-family: '华文楷书', 'STKaiti', serif; 
+                    letter-spacing: 4px; 
+                } 
+                .print-seal { 
+                    display: inline-block; 
+                    border: 2px solid #c23a22; 
+                    color: #c23a22; 
+                    padding: 5px 12px; 
+                    border-radius: 40px; 
+                    font-size: 12px; 
+                    font-weight: bold; 
+                    transform: rotate(-5deg); 
+                    font-family: monospace; 
+                    background: rgba(194,58,34,0.05); 
+                } 
+                .print-name { 
+                    text-align: center; 
+                    font-size: 18px; 
+                    color: #5a3e28; 
+                    margin: 15px 0 20px; 
+                    letter-spacing: 2px; 
+                } 
+                .print-prefix { 
+                    text-align: center; 
+                    font-size: 42px; 
+                    font-weight: 800; 
+                    color: #bc6f3c; 
+                    margin: 20px 0 10px; 
+                    letter-spacing: 4px; 
+                    word-break: break-word; 
+                } 
+                .print-middle { 
+                    text-align: center; 
+                    font-size: 24px; 
+                    font-weight: 600; 
+                    color: #8b5a3a; 
+                    margin: 15px 0 10px; 
+                    letter-spacing: 2px; 
+                } 
+                .print-suffix { 
+                    text-align: center; 
+                    font-size: 20px; 
+                    font-weight: 500; 
+                    color: #a56b3e; 
+                    margin: 10px 0 20px; 
+                    font-style: italic; 
+                } 
+                .print-remark { 
+                    text-align: center; 
+                    font-size: 14px; 
+                    color: #b88b5a; 
+                    border-top: 1px dashed #e2cf8b; 
+                    padding-top: 18px; 
+                    margin-top: 15px; 
+                    font-style: normal; 
+                } 
+                .print-footer { 
+                    text-align: center; 
+                    font-size: 11px; 
+                    color: #bc8f6a; 
+                    margin-top: 20px; 
+                    font-family: monospace; 
+                } 
+            </style> 
+            <div class="print-card"> 
+                <div class="print-header"> 
+                    <div class="print-logo">${getCompanyLogoText()}</div> 
+                </div> 
+                <div class="print-name">${currentData.fullDisplayName || currentData.userName}大人</div> 
+                <div class="print-prefix">【${prefix}】</div> 
+                ${middle ? `<div class="print-middle">${middle}</div>` : ''} 
+                ${suffix ? `<div class="print-suffix">${suffix}</div>` : ''} 
+                <div class="print-remark">✨ ${currentData.remark || "此人深藏不露"} ✨</div> 
+                <div class="print-footer">—— 来自BSG古代职业鉴定所 ——</div> 
+            </div> 
+        `; 
+         
+        document.body.appendChild(canvasContainer); 
+         
+        try { 
+            const canvas = await html2canvas(canvasContainer, { 
+                scale: 2.8, 
+                backgroundColor: '#FFFCF0', 
+                useCORS: true, 
+                logging: false 
+            }); 
+            const link = document.createElement('a'); 
+            link.download = `古代职业_${currentData.surname || '鉴定'}.png`; 
+            link.href = canvas.toDataURL('image/png'); 
+            link.click(); 
+            showToast("✅ 图片已保存", 1800); 
+        } catch (err) { 
+            console.error(err); 
+            showToast("截图失败，可重试", 2000); 
+        } finally { 
+            document.body.removeChild(canvasContainer); 
+        } 
+    } 
+     
+    // 辅助函数：获取公司Logo文字 
+    function getCompanyLogoText() { 
+        return '<img src="logo.png" alt="公司Logo" style="height: 40px; width: auto; object-fit: contain;" onerror="this.src=\'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 30%22><text y=%2220%22 font-size=%2220%22 fill=%22%238b3c2a%22>专属鉴定司</text></svg>\'"> 专属鉴定司'; 
+    }
+
+    // 初始化Logo（支持未来替换真实公司Logo）
+    function initLogo() {
+        const realImg = document.getElementById("realLogoImg");
+        const fallbackDiv = document.getElementById("logoTextFallback");
+        const miniIcon = document.getElementById("miniLogoIcon");
+        // 设置Logo为logo.png
+        realImg.src = "logo.png";
+        realImg.onload = function() {
+            realImg.style.display = "block";
+            fallbackDiv.style.display = "none";
+            // 更新mini logo
+            miniIcon.style.backgroundImage = 'url(logo.png)';
+            miniIcon.style.backgroundSize = 'cover';
+            miniIcon.style.backgroundPosition = 'center';
+            miniIcon.innerText = '';
+        };
+        realImg.onerror = function() {
+            realImg.style.display = "none";
+            fallbackDiv.style.display = "flex";
+            fallbackDiv.innerText = "🏮";
+            miniIcon.innerText = "🏮";
+        };
+    }
+
+    // 事件绑定
+    document.addEventListener("DOMContentLoaded", () => {
+        initLogo();
+        document.getElementById("generateBtn").addEventListener("click", () => {
+            const name = document.getElementById("userName").value;
+            const job = document.getElementById("userJob").value;
+            generateAncientCareer(name, job);
+        });
+        document.getElementById("randomTestBtn").addEventListener("click", randomTest);
+        document.getElementById("saveImageBtn").addEventListener("click", saveAsImage);
+        
+        // 初始化占位内容
+        document.getElementById("displayNameTitle").innerHTML = "待鉴定 · 大人";
+        document.getElementById("displayJobResult").innerHTML = "【   】";
+        document.getElementById("displayFunnyNote").innerHTML = "✨ 输入姓名与岗位，解锁你的前世官职 ✨";
+    });
+</script>
+</body>
+</html>
